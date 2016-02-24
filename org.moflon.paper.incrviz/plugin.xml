@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.menus">
+	<menuContribution
+            allPopups="false"
+            locationURI="popup:org.moflon.ide.ui.moflon?after=moflonGroupBuilding">
+            <command
+               commandId="org.moflon.paper.incrviz.commands.CollectStatisticsCommand"
+               label="Collect statistics"
+               style="push"
+               tooltip="Collect statistics">
+            <visibleWhen
+                  checkEnabled="false">
+            </visibleWhen>
+         </command>
+         </menuContribution>
+         </extension>
+       
+   <extension
+         point="org.eclipse.ui.bindings">  
+         <key
+            commandId="org.moflon.paper.incrviz.commands.CollectStatisticsCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M2+M3+E Z">
+      </key>
+      </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+          <command
+                categoryId="org.moflon.ide.ui.commands.MainCategory"
+                defaultHandler="org.moflon.paper.incrviz.CollectStatisticsHandler"
+                id="org.moflon.paper.incrviz.commands.CollectStatisticsCommand"
+                name="Collect Statistics">
+      </command>
+         </extension>
+</plugin>

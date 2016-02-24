@@ -1,0 +1,15 @@
+/**/~$*.pptx
+*.pdf
+*.aux
+*.log
+*.synctex.gz
+*.bbl
+*.blg
+*.txss
+
+!/figures/**/*.pdf
+
+/**/tmp.csv
+/**/.Rhistory
+/**/*.Rtr
+
