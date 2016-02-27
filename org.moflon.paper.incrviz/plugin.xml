@@ -7,10 +7,10 @@
             allPopups="false"
             locationURI="popup:org.moflon.ide.ui.moflon?after=moflonGroupBuilding">
             <command
-               commandId="org.moflon.paper.incrviz.commands.CollectStatisticsCommand"
-               label="Collect statistics"
+               commandId="org.moflon.paper.incrviz.commands.ICGT2016Evaluation"
+               label=" ICGT 2016 evaluation"
                style="push"
-               tooltip="Collect statistics">
+               tooltip=" ICGT 2016 evaluation">
             <visibleWhen
                   checkEnabled="false">
             </visibleWhen>
@@ -21,7 +21,7 @@
    <extension
          point="org.eclipse.ui.bindings">  
          <key
-            commandId="org.moflon.paper.incrviz.commands.CollectStatisticsCommand"
+            commandId="org.moflon.paper.incrviz.commands.ICGT2016Evaluation"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M2+M3+E Z">
@@ -31,8 +31,8 @@
          point="org.eclipse.ui.commands">
           <command
                 categoryId="org.moflon.ide.ui.commands.MainCategory"
-                defaultHandler="org.moflon.paper.incrviz.CollectStatisticsHandler"
-                id="org.moflon.paper.incrviz.commands.CollectStatisticsCommand"
+                defaultHandler="org.moflon.paper.incrviz.ICGT2016EvaluationHandler"
+                id="org.moflon.paper.incrviz.commands.ICGT2016Evaluation"
                 name="Collect Statistics">
       </command>
          </extension>
