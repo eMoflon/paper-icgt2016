@@ -2,6 +2,7 @@ package org.moflon.paper.incrviz;
 
 import java.util.Arrays;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -52,14 +53,20 @@ final class EObjectCounter implements IResourceVisitor
                   if (Visualizer.getInstance().isInterestingCandidate(eObject))
                   {
                      ++visitedObjectCount;
+                     
+                     if ((visitedObjectCount % 10000) == 0)
+                     {
+                        logger.debug("Collecting objects: " + visitedObjectCount);
+                     }
                   }
+                  
                   WorkspaceHelper.checkCanceledAndThrowInterruptedException(monitor);
                } catch (final InterruptedException e)
                {
                   throw e;
                } catch (final Exception e)
                {
-                  logger.error(e);
+                  logException(e);
                }
             }
          } catch (final InterruptedException e)
@@ -67,7 +74,7 @@ final class EObjectCounter implements IResourceVisitor
             throw new RuntimeException("User canceled", e);
          } catch (final RuntimeException | PackageNotFoundException e)
          {
-            logger.error(e);
+            logException(e);
          }
       }
 
@@ -109,5 +116,10 @@ final class EObjectCounter implements IResourceVisitor
    {
       final Resource resource = eMoflonEMFUtil.getResourceFromFileIntoDefaultResourceSet(file);
       return resource;
+   }
+
+   private void logException(Exception e)
+   {
+      logger.error("Problem: " + e.toString() + " - Stacktrace. " + ExceptionUtils.getStackTrace(e));
    }
 }

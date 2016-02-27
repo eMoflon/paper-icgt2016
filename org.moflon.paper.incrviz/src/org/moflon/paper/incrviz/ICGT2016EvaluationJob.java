@@ -135,11 +135,6 @@ final class ICGT2016EvaluationJob extends WorkspaceJob
                      final Resource resource = eMoflonEMFUtil.getResourceFromFileIntoDefaultResourceSet(file);
                      return resource;
                   }
-                  
-                  private void logException(Exception e)
-                  {
-                     logger.error("Problem: " + e.toString() + " - Stacktrace. " + ExceptionUtils.getStackTrace(e));
-                  }
                });
             }
          }
@@ -148,7 +143,7 @@ final class ICGT2016EvaluationJob extends WorkspaceJob
 
       } catch (final CoreException e)
       {
-         logger.error(e);
+         logException(e);
       } catch (final RuntimeException e)
       {
          if (e.getCause() instanceof InterruptedException)
@@ -178,5 +173,10 @@ final class ICGT2016EvaluationJob extends WorkspaceJob
          }
       }
       return objectCounter;
+   }
+   
+   private void logException(Exception e)
+   {
+      logger.error("Problem: " + e.toString() + " - Stacktrace. " + ExceptionUtils.getStackTrace(e));
    }
 }
